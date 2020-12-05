@@ -1,0 +1,13 @@
+---
+# vars file for role-aphex
+name_resistry: https://eu.gcr.io
+home_work: $HOME
+folder: telemaqueHQ
+repo_name: https://github.com/AbdoulRahimBarry/fake-backend-ci.git
+branch: master
+dockerfile_path: $HOME/telemaqueHQ/fake-backend
+dockerfile_name: Dockerfile
+hostname: eu.gcr.io
+project_id: gcr-private
+image_name: fake-backend
+tag_name: v1

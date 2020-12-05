@@ -1,0 +1,14 @@
+- name: Deploy app
+  hosts: localhost
+  become: true
+
+
+  vars:
+    pip_install_packages:
+    - name: docker
+
+  roles:
+    - role: 'role-pip'
+    - role: 'role-docker'
+    - role: 'role-git'
+    - role: 'role-aphex'

@@ -1,0 +1,36 @@
+# tasks file for role-aphex
+
+# Connection to the private resistry "Google Container Resistry " using service account
+- name: Log into private registry and force re-authorization
+  docker_login:
+    registry: "{{ name_resistry }}"
+    username: _json_key
+    password: " {{ lookup('file', '/home/barry/Documents/gcr-private-9155024b5f42.json')}}"
+    reauthorize: yes
+
+# Create the file to gitclone the project
+- name: Crer to file ownership, group and permissions
+  file:
+    path: "{{ home_work }}/{{ folder }}"
+    state: directory
+
+# Clone the project in private Resistry "Github"
+- git:
+    repo: "{{ repo_name }}"
+    dest: "{{ home_work }}/{{ folder }}"
+    key_file: "{{ home_work }}/.ssh/id_rsa"
+    accept_hostkey: yes
+    force: yes
+    version: "{{ branch }}"
+    recursive: no
+
+# Build images
+- name: Build an image Dockerfile
+  docker_image:
+    build:
+      path: "{{ dockerfile_path }}"
+      dockerfile: "{{ dockerfile_name }}"
+    name: "{{ hostname }}/{{ project_id }}/{{ image_name }}"
+    tag: "{{ tag_name }}"
+    source: build
+    push: yes
