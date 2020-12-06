@@ -1,7 +1,7 @@
 Role Name: role-aphex
 =========
 
-This role dd premet to build a docker image and push it in google containers resistry.
+This role premet to build a docker image and push it in google containers resistry.
 
 Requirements
 ------------
