@@ -3,8 +3,7 @@
 Execute Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Running the playbook allows you to build a dockerfile and push the image to the google registry: google containers registry:
+First it will install pip dependencies for python, docker, git.
 
-    - hosts: servers
-      roles:
-         - { role: role-aphex }
+    - ansible-playbook playbook.yaml
